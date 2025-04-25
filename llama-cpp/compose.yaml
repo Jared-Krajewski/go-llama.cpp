@@ -1,0 +1,13 @@
+services:
+  llama-cpp:
+    build:
+      context: ./
+    container_name: llama-cpp
+    ports:
+      - "11435:11435"
+    networks:
+      - llama-net
+
+networks:
+  llama-net:
+    external: true
