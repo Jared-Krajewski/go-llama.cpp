@@ -1,7 +1,10 @@
 FROM ghcr.io/ggerganov/llama.cpp:server
 
 COPY ./models /models
+COPY ./entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
 
 EXPOSE 11435
 
-CMD ["--host", "0.0.0.0", "--port", "11435", "-m", "/models/tinyllama.gguf"]
+ENTRYPOINT ["/entrypoint.sh"]
